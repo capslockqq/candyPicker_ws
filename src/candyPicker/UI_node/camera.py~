@@ -5,5 +5,10 @@ import numpy as np
 import math
 import rospy
 
+class ez():
+	def __init__(self):
+		print "lol"
+
+
 if __name__ == "__main__":
-    print('Nar')
+    
