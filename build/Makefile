@@ -225,201 +225,6 @@ gtest_main/fast:
 .PHONY : gtest_main/fast
 
 #=============================================================================
-# Target rules for targets named _catkin_empty_exported_target
-
-# Build rule for target.
-_catkin_empty_exported_target: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _catkin_empty_exported_target
-.PHONY : _catkin_empty_exported_target
-
-# fast build rule for target.
-_catkin_empty_exported_target/fast:
-	$(MAKE) -f au_crustcrawler_base/CMakeFiles/_catkin_empty_exported_target.dir/build.make au_crustcrawler_base/CMakeFiles/_catkin_empty_exported_target.dir/build
-.PHONY : _catkin_empty_exported_target/fast
-
-#=============================================================================
-# Target rules for targets named dynamixel_controllers_gencpp
-
-# Build rule for target.
-dynamixel_controllers_gencpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dynamixel_controllers_gencpp
-.PHONY : dynamixel_controllers_gencpp
-
-# fast build rule for target.
-dynamixel_controllers_gencpp/fast:
-	$(MAKE) -f dynamixel_motor/dynamixel_controllers/CMakeFiles/dynamixel_controllers_gencpp.dir/build.make dynamixel_motor/dynamixel_controllers/CMakeFiles/dynamixel_controllers_gencpp.dir/build
-.PHONY : dynamixel_controllers_gencpp/fast
-
-#=============================================================================
-# Target rules for targets named dynamixel_controllers_generate_messages
-
-# Build rule for target.
-dynamixel_controllers_generate_messages: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dynamixel_controllers_generate_messages
-.PHONY : dynamixel_controllers_generate_messages
-
-# fast build rule for target.
-dynamixel_controllers_generate_messages/fast:
-	$(MAKE) -f dynamixel_motor/dynamixel_controllers/CMakeFiles/dynamixel_controllers_generate_messages.dir/build.make dynamixel_motor/dynamixel_controllers/CMakeFiles/dynamixel_controllers_generate_messages.dir/build
-.PHONY : dynamixel_controllers_generate_messages/fast
-
-#=============================================================================
-# Target rules for targets named dynamixel_controllers_generate_messages_cpp
-
-# Build rule for target.
-dynamixel_controllers_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dynamixel_controllers_generate_messages_cpp
-.PHONY : dynamixel_controllers_generate_messages_cpp
-
-# fast build rule for target.
-dynamixel_controllers_generate_messages_cpp/fast:
-	$(MAKE) -f dynamixel_motor/dynamixel_controllers/CMakeFiles/dynamixel_controllers_generate_messages_cpp.dir/build.make dynamixel_motor/dynamixel_controllers/CMakeFiles/dynamixel_controllers_generate_messages_cpp.dir/build
-.PHONY : dynamixel_controllers_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named dynamixel_controllers_generate_messages_lisp
-
-# Build rule for target.
-dynamixel_controllers_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dynamixel_controllers_generate_messages_lisp
-.PHONY : dynamixel_controllers_generate_messages_lisp
-
-# fast build rule for target.
-dynamixel_controllers_generate_messages_lisp/fast:
-	$(MAKE) -f dynamixel_motor/dynamixel_controllers/CMakeFiles/dynamixel_controllers_generate_messages_lisp.dir/build.make dynamixel_motor/dynamixel_controllers/CMakeFiles/dynamixel_controllers_generate_messages_lisp.dir/build
-.PHONY : dynamixel_controllers_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named dynamixel_controllers_generate_messages_py
-
-# Build rule for target.
-dynamixel_controllers_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dynamixel_controllers_generate_messages_py
-.PHONY : dynamixel_controllers_generate_messages_py
-
-# fast build rule for target.
-dynamixel_controllers_generate_messages_py/fast:
-	$(MAKE) -f dynamixel_motor/dynamixel_controllers/CMakeFiles/dynamixel_controllers_generate_messages_py.dir/build.make dynamixel_motor/dynamixel_controllers/CMakeFiles/dynamixel_controllers_generate_messages_py.dir/build
-.PHONY : dynamixel_controllers_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named dynamixel_controllers_genlisp
-
-# Build rule for target.
-dynamixel_controllers_genlisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dynamixel_controllers_genlisp
-.PHONY : dynamixel_controllers_genlisp
-
-# fast build rule for target.
-dynamixel_controllers_genlisp/fast:
-	$(MAKE) -f dynamixel_motor/dynamixel_controllers/CMakeFiles/dynamixel_controllers_genlisp.dir/build.make dynamixel_motor/dynamixel_controllers/CMakeFiles/dynamixel_controllers_genlisp.dir/build
-.PHONY : dynamixel_controllers_genlisp/fast
-
-#=============================================================================
-# Target rules for targets named dynamixel_controllers_genpy
-
-# Build rule for target.
-dynamixel_controllers_genpy: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dynamixel_controllers_genpy
-.PHONY : dynamixel_controllers_genpy
-
-# fast build rule for target.
-dynamixel_controllers_genpy/fast:
-	$(MAKE) -f dynamixel_motor/dynamixel_controllers/CMakeFiles/dynamixel_controllers_genpy.dir/build.make dynamixel_motor/dynamixel_controllers/CMakeFiles/dynamixel_controllers_genpy.dir/build
-.PHONY : dynamixel_controllers_genpy/fast
-
-#=============================================================================
-# Target rules for targets named dynamixel_msgs_gencpp
-
-# Build rule for target.
-dynamixel_msgs_gencpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dynamixel_msgs_gencpp
-.PHONY : dynamixel_msgs_gencpp
-
-# fast build rule for target.
-dynamixel_msgs_gencpp/fast:
-	$(MAKE) -f dynamixel_motor/dynamixel_msgs/CMakeFiles/dynamixel_msgs_gencpp.dir/build.make dynamixel_motor/dynamixel_msgs/CMakeFiles/dynamixel_msgs_gencpp.dir/build
-.PHONY : dynamixel_msgs_gencpp/fast
-
-#=============================================================================
-# Target rules for targets named dynamixel_msgs_generate_messages
-
-# Build rule for target.
-dynamixel_msgs_generate_messages: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dynamixel_msgs_generate_messages
-.PHONY : dynamixel_msgs_generate_messages
-
-# fast build rule for target.
-dynamixel_msgs_generate_messages/fast:
-	$(MAKE) -f dynamixel_motor/dynamixel_msgs/CMakeFiles/dynamixel_msgs_generate_messages.dir/build.make dynamixel_motor/dynamixel_msgs/CMakeFiles/dynamixel_msgs_generate_messages.dir/build
-.PHONY : dynamixel_msgs_generate_messages/fast
-
-#=============================================================================
-# Target rules for targets named dynamixel_msgs_generate_messages_cpp
-
-# Build rule for target.
-dynamixel_msgs_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dynamixel_msgs_generate_messages_cpp
-.PHONY : dynamixel_msgs_generate_messages_cpp
-
-# fast build rule for target.
-dynamixel_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f dynamixel_motor/dynamixel_msgs/CMakeFiles/dynamixel_msgs_generate_messages_cpp.dir/build.make dynamixel_motor/dynamixel_msgs/CMakeFiles/dynamixel_msgs_generate_messages_cpp.dir/build
-.PHONY : dynamixel_msgs_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named dynamixel_msgs_generate_messages_lisp
-
-# Build rule for target.
-dynamixel_msgs_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dynamixel_msgs_generate_messages_lisp
-.PHONY : dynamixel_msgs_generate_messages_lisp
-
-# fast build rule for target.
-dynamixel_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f dynamixel_motor/dynamixel_msgs/CMakeFiles/dynamixel_msgs_generate_messages_lisp.dir/build.make dynamixel_motor/dynamixel_msgs/CMakeFiles/dynamixel_msgs_generate_messages_lisp.dir/build
-.PHONY : dynamixel_msgs_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named dynamixel_msgs_generate_messages_py
-
-# Build rule for target.
-dynamixel_msgs_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dynamixel_msgs_generate_messages_py
-.PHONY : dynamixel_msgs_generate_messages_py
-
-# fast build rule for target.
-dynamixel_msgs_generate_messages_py/fast:
-	$(MAKE) -f dynamixel_motor/dynamixel_msgs/CMakeFiles/dynamixel_msgs_generate_messages_py.dir/build.make dynamixel_motor/dynamixel_msgs/CMakeFiles/dynamixel_msgs_generate_messages_py.dir/build
-.PHONY : dynamixel_msgs_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named dynamixel_msgs_genlisp
-
-# Build rule for target.
-dynamixel_msgs_genlisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dynamixel_msgs_genlisp
-.PHONY : dynamixel_msgs_genlisp
-
-# fast build rule for target.
-dynamixel_msgs_genlisp/fast:
-	$(MAKE) -f dynamixel_motor/dynamixel_msgs/CMakeFiles/dynamixel_msgs_genlisp.dir/build.make dynamixel_motor/dynamixel_msgs/CMakeFiles/dynamixel_msgs_genlisp.dir/build
-.PHONY : dynamixel_msgs_genlisp/fast
-
-#=============================================================================
-# Target rules for targets named dynamixel_msgs_genpy
-
-# Build rule for target.
-dynamixel_msgs_genpy: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dynamixel_msgs_genpy
-.PHONY : dynamixel_msgs_genpy
-
-# fast build rule for target.
-dynamixel_msgs_genpy/fast:
-	$(MAKE) -f dynamixel_motor/dynamixel_msgs/CMakeFiles/dynamixel_msgs_genpy.dir/build.make dynamixel_motor/dynamixel_msgs/CMakeFiles/dynamixel_msgs_genpy.dir/build
-.PHONY : dynamixel_msgs_genpy/fast
-
-#=============================================================================
 # Target rules for targets named std_msgs_generate_messages_cpp
 
 # Build rule for target.
@@ -429,7 +234,7 @@ std_msgs_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 std_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f dynamixel_motor/dynamixel_msgs/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make dynamixel_motor/dynamixel_msgs/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
+	$(MAKE) -f candyPicker/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make candyPicker/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
 .PHONY : std_msgs_generate_messages_cpp/fast
 
 #=============================================================================
@@ -442,7 +247,7 @@ std_msgs_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 std_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f dynamixel_motor/dynamixel_msgs/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make dynamixel_motor/dynamixel_msgs/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
+	$(MAKE) -f candyPicker/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make candyPicker/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
 .PHONY : std_msgs_generate_messages_lisp/fast
 
 #=============================================================================
@@ -455,7 +260,7 @@ std_msgs_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 std_msgs_generate_messages_py/fast:
-	$(MAKE) -f dynamixel_motor/dynamixel_msgs/CMakeFiles/std_msgs_generate_messages_py.dir/build.make dynamixel_motor/dynamixel_msgs/CMakeFiles/std_msgs_generate_messages_py.dir/build
+	$(MAKE) -f candyPicker/CMakeFiles/std_msgs_generate_messages_py.dir/build.make candyPicker/CMakeFiles/std_msgs_generate_messages_py.dir/build
 .PHONY : std_msgs_generate_messages_py/fast
 
 # Help Target
@@ -477,21 +282,6 @@ help:
 	@echo "... tests"
 	@echo "... gtest"
 	@echo "... gtest_main"
-	@echo "... _catkin_empty_exported_target"
-	@echo "... dynamixel_controllers_gencpp"
-	@echo "... dynamixel_controllers_generate_messages"
-	@echo "... dynamixel_controllers_generate_messages_cpp"
-	@echo "... dynamixel_controllers_generate_messages_lisp"
-	@echo "... dynamixel_controllers_generate_messages_py"
-	@echo "... dynamixel_controllers_genlisp"
-	@echo "... dynamixel_controllers_genpy"
-	@echo "... dynamixel_msgs_gencpp"
-	@echo "... dynamixel_msgs_generate_messages"
-	@echo "... dynamixel_msgs_generate_messages_cpp"
-	@echo "... dynamixel_msgs_generate_messages_lisp"
-	@echo "... dynamixel_msgs_generate_messages_py"
-	@echo "... dynamixel_msgs_genlisp"
-	@echo "... dynamixel_msgs_genpy"
 	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_py"

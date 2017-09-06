@@ -8,8 +8,10 @@ For a single access to all joints you must also launch the meta.launch which con
 JointTrajectoryActionController for the joints. 
 
  -->
-	
-    <node name="candyPicker_camera" pkg="candyPicker" type="camera.py" required="true" output="screen">
-
+    <node name="candyPicker_UI" pkg="candyPicker" type="UI.py" required="true" output="screen">
     </node>
+    <node name="candyPicker_processRowImg" pkg="candyPicker" type="processRowImg.py" required="true" output="screen">
+    </node>
+
+	
 </launch>
