@@ -3,6 +3,6 @@ import rospy
 
 class inverseKinematic():
     def __init__(self):
-        print "init"
+        self.something = 0
     def goTo(self, coords):
-        print coords
+        self.some = coords

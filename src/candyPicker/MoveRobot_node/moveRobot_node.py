@@ -16,8 +16,8 @@ class moveRobot_node():
         self.doneMoving_publisher.publish(True)      
         
     def callback(self,coords):
-        print "Callback moveRobot"
-	print coords
+        print "Callback moveRobot \r"
+        print coords, "\r"
         self.invKin.goTo(10)
         self.doneMoving()
 
