@@ -6,16 +6,17 @@ import inverseKinematic
 class moveRobot_node():
     def __init__(self):
         rospy.init_node('MoveRobot_node', anonymous=True)
-        rospy.Subscriber("TableCoords", Int32MultiArray, self.callback)
+        rospy.Subscriber("physicalCoords", Int32MultiArray, self.callback)
         self.doneMoving_puplisher = rospy.Publisher("doneMoving", Bool)
         
-        self.invKin = inverseKinematic()
+        self.invKin = inverseKinematic.inverseKinematic()
         rospy.spin()
         
     def doneMoving(self): 
-        self.sort_string_puplisher.publish(true)      
+        self.sort_string_puplisher.publish(True)      
         
     def callback(info,coords):
+        print "Callback moveRobot"
         self.invKin.goTo(coords)
         self.doneMoving()
         print message
