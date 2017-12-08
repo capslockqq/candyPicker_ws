@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/candyPicker_ws/devel
+
+Name: candyPicker
+Description: Description of candyPicker
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ubuntu/candyPicker_ws/devel/lib 
+Requires: 

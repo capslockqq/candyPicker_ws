@@ -1,0 +1,15 @@
+<launch>
+<!-- 
+This launch file initialises the dynamixel motor manager and initialises and starts each joint.
+The configuration of each joint is specified in the au_crustcrawler_base/conf/joints.yaml
+
+This launch files gives access to each joint separately. 
+For a single access to all joints you must also launch the meta.launch which configures a 
+JointTrajectoryActionController for the joints. 
+
+ -->
+	
+    <node name="candyPicker_camera" pkg="candyPicker" type="camera.py" required="true" output="screen">
+
+    </node>
+</launch>

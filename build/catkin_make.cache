@@ -1,0 +1,2 @@
+au_crustcrawler_base:candyPicker:dynamixel_motor/dynamixel_controllers:dynamixel_motor/dynamixel_driver:dynamixel_motor/dynamixel_motor:dynamixel_motor/dynamixel_msgs:dynamixel_motor/dynamixel_tutorials
+-DCATKIN_DEVEL_PREFIX=/home/ubuntu/candyPicker_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ubuntu/candyPicker_ws/install

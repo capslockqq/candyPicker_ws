@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/candyPicker_ws/install
+
+Name: dynamixel_driver
+Description: Description of dynamixel_driver
+Version: 0.4.0
+Cflags: 
+Libs: -L/home/ubuntu/candyPicker_ws/install/lib 
+Requires: rospy diagnostic_msgs
