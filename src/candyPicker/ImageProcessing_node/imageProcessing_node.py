@@ -5,20 +5,25 @@ import rospy
 class imageProcessing_node():
     def __init__(self):
         rospy.init_node('ImageProcessing_node', anonymous=True)
-        rospy.Subscriber("sort", String, self.callback)
+        rospy.Subscriber("sort", String, self.callbackSort)
+        rospy.Subscriber("doneMoving", Bool, self.callbackDoneMoving)
         #Publish pixel coordinate to the tablecoord, to make the pixel into real life coordinates
-        self.MMsPixelCord_publisher = rospy.Publisher("MMsPixelCord", Int32MultiArray)
+        self.MMsPixelCord_publisher = rospy.Publisher("MMsPixelCoord", Int32MultiArray)
         #Used for calibrating the cameras coordinate system
-        self.refPixelCord_publisher = rospy.Publisher("refPixelCord", Int32MultiArray)
+        self.refPixelCord_publisher = rospy.Publisher("refPixelCoord", Int32MultiArray)
         
-        self.AllowedToProcessImage = True
+        self.AllowedToProcessImage = False
         rospy.spin()
         
         
-    def callback(info, message):
-        if (self.AllowedToProcessImage == True):
+    def callbackSort(info, message):
+        #if (self.AllowedToProcessImage == True):
             self.array = [12,23,45]
+            print "imageProc callback function"
             MMS.PixelCord_publisher.Publish(self.array)
+            
+    def callbackDoneMoving(info, message):
+        self.AllowedToProcessImage = True
 
 if __name__ == "__main__":
     node = imageProcessing_node()
