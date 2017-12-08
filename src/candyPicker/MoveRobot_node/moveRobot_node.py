@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from std_msgs.msg import String
+from std_msgs.msg import String, Bool, Int32MultiArray
 import rospy
 import inverseKinematic
 
@@ -21,6 +21,6 @@ class moveRobot_node():
         print message
 
 if __name__ == "__main__":
-    node = moveRobot_node():
+    node = moveRobot_node()
     
 
