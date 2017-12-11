@@ -225,6 +225,97 @@ gtest_main/fast:
 .PHONY : gtest_main/fast
 
 #=============================================================================
+# Target rules for targets named candyPicker_gencpp
+
+# Build rule for target.
+candyPicker_gencpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 candyPicker_gencpp
+.PHONY : candyPicker_gencpp
+
+# fast build rule for target.
+candyPicker_gencpp/fast:
+	$(MAKE) -f candyPicker/CMakeFiles/candyPicker_gencpp.dir/build.make candyPicker/CMakeFiles/candyPicker_gencpp.dir/build
+.PHONY : candyPicker_gencpp/fast
+
+#=============================================================================
+# Target rules for targets named candyPicker_generate_messages
+
+# Build rule for target.
+candyPicker_generate_messages: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 candyPicker_generate_messages
+.PHONY : candyPicker_generate_messages
+
+# fast build rule for target.
+candyPicker_generate_messages/fast:
+	$(MAKE) -f candyPicker/CMakeFiles/candyPicker_generate_messages.dir/build.make candyPicker/CMakeFiles/candyPicker_generate_messages.dir/build
+.PHONY : candyPicker_generate_messages/fast
+
+#=============================================================================
+# Target rules for targets named candyPicker_generate_messages_cpp
+
+# Build rule for target.
+candyPicker_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 candyPicker_generate_messages_cpp
+.PHONY : candyPicker_generate_messages_cpp
+
+# fast build rule for target.
+candyPicker_generate_messages_cpp/fast:
+	$(MAKE) -f candyPicker/CMakeFiles/candyPicker_generate_messages_cpp.dir/build.make candyPicker/CMakeFiles/candyPicker_generate_messages_cpp.dir/build
+.PHONY : candyPicker_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named candyPicker_generate_messages_lisp
+
+# Build rule for target.
+candyPicker_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 candyPicker_generate_messages_lisp
+.PHONY : candyPicker_generate_messages_lisp
+
+# fast build rule for target.
+candyPicker_generate_messages_lisp/fast:
+	$(MAKE) -f candyPicker/CMakeFiles/candyPicker_generate_messages_lisp.dir/build.make candyPicker/CMakeFiles/candyPicker_generate_messages_lisp.dir/build
+.PHONY : candyPicker_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named candyPicker_generate_messages_py
+
+# Build rule for target.
+candyPicker_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 candyPicker_generate_messages_py
+.PHONY : candyPicker_generate_messages_py
+
+# fast build rule for target.
+candyPicker_generate_messages_py/fast:
+	$(MAKE) -f candyPicker/CMakeFiles/candyPicker_generate_messages_py.dir/build.make candyPicker/CMakeFiles/candyPicker_generate_messages_py.dir/build
+.PHONY : candyPicker_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named candyPicker_genlisp
+
+# Build rule for target.
+candyPicker_genlisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 candyPicker_genlisp
+.PHONY : candyPicker_genlisp
+
+# fast build rule for target.
+candyPicker_genlisp/fast:
+	$(MAKE) -f candyPicker/CMakeFiles/candyPicker_genlisp.dir/build.make candyPicker/CMakeFiles/candyPicker_genlisp.dir/build
+.PHONY : candyPicker_genlisp/fast
+
+#=============================================================================
+# Target rules for targets named candyPicker_genpy
+
+# Build rule for target.
+candyPicker_genpy: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 candyPicker_genpy
+.PHONY : candyPicker_genpy
+
+# fast build rule for target.
+candyPicker_genpy/fast:
+	$(MAKE) -f candyPicker/CMakeFiles/candyPicker_genpy.dir/build.make candyPicker/CMakeFiles/candyPicker_genpy.dir/build
+.PHONY : candyPicker_genpy/fast
+
+#=============================================================================
 # Target rules for targets named std_msgs_generate_messages_cpp
 
 # Build rule for target.
@@ -282,6 +373,13 @@ help:
 	@echo "... tests"
 	@echo "... gtest"
 	@echo "... gtest_main"
+	@echo "... candyPicker_gencpp"
+	@echo "... candyPicker_generate_messages"
+	@echo "... candyPicker_generate_messages_cpp"
+	@echo "... candyPicker_generate_messages_lisp"
+	@echo "... candyPicker_generate_messages_py"
+	@echo "... candyPicker_genlisp"
+	@echo "... candyPicker_genpy"
 	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_py"
