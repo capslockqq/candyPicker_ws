@@ -1,16 +1,16 @@
 #!/usr/bin/env python
-from std_msgs.msg import Int32MultiArray, String, Bool
+from std_msgs.msg import Int32, String, Bool
 import rospy
-
+from rospy_tutorials.msg import Floats
 class imageProcessing_node():
     def __init__(self):
         rospy.init_node('ImageProcessing_node', anonymous=True)
         rospy.Subscriber("sort", String, self.callbackSort)
         rospy.Subscriber("doneMoving", Bool, self.callbackDoneMoving)
         #Publish pixel coordinate to the tablecoord, to make the pixel into real life coordinates
-        self.MMsPixelCord_publisher = rospy.Publisher("MMsPixelCoord", Int32MultiArray)
+        self.MMsPixelCord_publisher = rospy.Publisher("MMsPixelCoord", numpy_msg(Floats))
         #Used for calibrating the cameras coordinate system
-        self.refPixelCord_publisher = rospy.Publisher("refPixelCoord", Int32MultiArray)
+        self.refPixelCord_publisher = rospy.Publisher("refPixelCoord", numpy_msg(Floats))
         
         self.AllowedToProcessImage = False
         rospy.spin()
@@ -19,8 +19,7 @@ class imageProcessing_node():
     def callbackSort(self, message):
         #if (self.AllowedToProcessImage == True):
         print "imageProc callback function"
-        array = []
-	my_array = Int32MultiArray
+        a = numpy.array([1.0, 2.1, 3.2, 4.3, 5.4, 6.5], dtype=numpy.Int32)
         self.MMsPixelCord_publisher.publish(a)
             
     def callbackDoneMoving(info, message):
