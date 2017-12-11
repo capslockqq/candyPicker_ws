@@ -15,7 +15,7 @@ class moveRobot_node():
     def doneMoving(self): 
         self.sort_string_puplisher.publish(True)      
         
-    def callback(info,coords):
+    def callback(self,info,coords):
         print "Callback moveRobot"
         self.invKin.goTo(coords)
         self.doneMoving()
