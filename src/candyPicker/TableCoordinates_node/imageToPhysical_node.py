@@ -8,7 +8,7 @@ class imageToPhysical_node():
         rospy.Subscriber("MMsPixelCoord", String, self.callbackMM)
         rospy.Subscriber("refPixelCoord", String, self.callbackRef)
         rospy.Subscriber("fullyErrect", String, self.callbackRef)
-        self.physicalCoord_publisher = rospy.Publisher("physicalCoord", Int32MutiArray)
+        self.physicalCoord_publisher = rospy.Publisher("physicalCoord", Int32MultiArray)
         rospy.spin()
         
     def callbackMM(info, message):
