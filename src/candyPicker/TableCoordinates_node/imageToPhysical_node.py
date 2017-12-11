@@ -5,9 +5,9 @@ import rospy
 class imageToPhysical_node():
     def __init__(self):
         rospy.init_node('imageToPhysical_node', anonymous=True)
-        rospy.Subscriber("MMsPixelCoord", String, self.callbackMM)
-        rospy.Subscriber("refPixelCoord", String, self.callbackRef)
-        rospy.Subscriber("fullyErrect", String, self.callbackRef)
+        rospy.Subscriber("MMsPixelCoord", Int32MultiArray, self.callbackMM)
+        rospy.Subscriber("refPixelCoord", Int32MultiArray, self.callbackRef)
+        rospy.Subscriber("fullyErrect", Int32MultiArray, self.callbackRef)
         self.physicalCoord_publisher = rospy.Publisher("physicalCoord", Int32MultiArray)
         rospy.spin()
         
