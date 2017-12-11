@@ -14,6 +14,8 @@ JointTrajectoryActionController for the joints.
     </node>
     <node name="candyPicker_moveRobot" pkg="candyPicker" type="moveRobot_node.py" required="true" output="screen">
     </node>
+    <node name="candyPicker_imageToPhysical" pkg="candyPicker" type="imageToPhysical_node.py" required="true" output="screen">
+    </node>
 
 	
 </launch>

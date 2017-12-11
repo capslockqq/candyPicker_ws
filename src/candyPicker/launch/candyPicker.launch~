@@ -10,9 +10,9 @@ JointTrajectoryActionController for the joints.
  -->
     <node name="candyPicker_UI" pkg="candyPicker" type="UI_node.py" required="true" output="screen">
     </node>
-    <node name="candyPicker_processRowImg" pkg="candyPicker" type="imageProcessing_node.py" required="true" output="screen">
+    <node name="candyPicker_imageProccesing" pkg="candyPicker" type="imageProcessing_node.py" required="true" output="screen">
     </node>
-    <node name="candyPicker_processRowImg" pkg="candyPicker" type="moveRobot_node.py" required="true" output="screen">
+    <node name="candyPicker_moveRobot" pkg="candyPicker" type="moveRobot_node.py" required="true" output="screen">
     </node>
 
 	
