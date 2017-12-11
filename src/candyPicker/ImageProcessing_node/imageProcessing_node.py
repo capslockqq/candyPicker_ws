@@ -19,9 +19,15 @@ class imageProcessing_node():
     def callbackSort(self, message):
         #if (self.AllowedToProcessImage == True):
         print "imageProc callback function"
+<<<<<<< HEAD
         array = []
 	my_array = Int32MultiArray
         self.MMsPixelCord_publisher.publish(a)
+=======
+        arr = [10,10,10] % rospy.get_time()
+        print message
+        self.MMsPixelCord_publisher.publish(arr)
+>>>>>>> 73fa04e0e4d7db39d133277da9c8628453e11a68
             
     def callbackDoneMoving(info, message):
         self.AllowedToProcessImage = True

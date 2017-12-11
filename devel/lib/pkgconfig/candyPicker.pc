@@ -3,6 +3,6 @@ prefix=/home/ubuntu/candyPicker_ws/devel
 Name: candyPicker
 Description: Description of candyPicker
 Version: 0.0.0
-Cflags: 
+Cflags: -I/home/ubuntu/candyPicker_ws/devel/include
 Libs: -L/home/ubuntu/candyPicker_ws/devel/lib 
-Requires: 
+Requires: rospy std_msgs message_runtime
