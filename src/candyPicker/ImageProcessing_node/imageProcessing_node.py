@@ -19,7 +19,7 @@ class imageProcessing_node():
     def callbackSort(self, message):
         #if (self.AllowedToProcessImage == True):
         print "imageProc callback function"
-        self.MMsPixelCord_publisher.Publish([10,10,10])
+        self.MMsPixelCord_publisher.publish([10,10,10])
             
     def callbackDoneMoving(info, message):
         self.AllowedToProcessImage = True
