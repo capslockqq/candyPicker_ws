@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from std_msgs.msg import String,Int32MultiArray
+from std_msgs.msg import String,Int32MultiArray,Bool
 import rospy
 
 class imageToPhysical_node():
@@ -7,7 +7,7 @@ class imageToPhysical_node():
         rospy.init_node('imageToPhysical_node', anonymous=True)
         rospy.Subscriber("MMsPixelCoord", Int32MultiArray, self.callbackMM)
         rospy.Subscriber("refPixelCoord", Int32MultiArray, self.callbackRef)
-        rospy.Subscriber("fullyErrect", Int32MultiArray, self.callbackRef)
+        rospy.Subscriber("fullyErrect", Bool, self.callbackRef)
         self.physicalCoord_publisher = rospy.Publisher("physicalCoord", Int32MultiArray)
         rospy.spin()
         
