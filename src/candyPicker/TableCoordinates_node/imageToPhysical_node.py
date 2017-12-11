@@ -11,11 +11,11 @@ class imageToPhysical_node():
         self.physicalCoord_publisher = rospy.Publisher("physicalCoord", Int32MultiArray)
         rospy.spin()
         
-    def callbackMM(self,info, message):
+    def callbackMM(self, message):
         print "CallBack_imageToPhysical" 
         self.physicalCoord_publisher.publish([10,10])
         
-    def callbackRef(info, message):
+    def callbackRef(message):
         print message  
     
     def callbackFullyErrect(info, message):
