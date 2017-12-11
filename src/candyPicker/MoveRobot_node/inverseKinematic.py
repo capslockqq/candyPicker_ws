@@ -4,5 +4,5 @@ import rospy
 class inverseKinematic():
     def __init__(self):
         print "init"
-    def goTo(coords):
+    def goTo(self, coords):
         print coords
