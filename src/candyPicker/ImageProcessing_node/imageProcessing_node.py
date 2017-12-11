@@ -16,10 +16,10 @@ class imageProcessing_node():
         rospy.spin()
         
         
-    def callbackSort(self, info, message):
+    def callbackSort(self, message):
         #if (self.AllowedToProcessImage == True):
-            print "imageProc callback function"
-            self.MMsPixelCord_publisher.Publish([10,10,10])
+        print "imageProc callback function"
+        self.MMsPixelCord_publisher.Publish([10,10,10])
             
     def callbackDoneMoving(info, message):
         self.AllowedToProcessImage = True
