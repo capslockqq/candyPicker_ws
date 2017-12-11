@@ -2,18 +2,15 @@
 from std_msgs.msg import String
 import rospy
 
-class UI():
+class UI_node():
 	def __init__(self):
-		self.sort_string_puplisher = rospy.Publisher("sort_by_color", String)
-		self.my_timer = rospy.Timer(rospy.Duration(0.1), self.on_timer) 
-		print "hej"
+		rospy.init_node("UI_node")
+		self.Sort_publisher = rospy.Publisher("sort", String)
+		self.FullyErrect_publisher = rospy.Publisher("fully_erect", Bool)
 		
-	def on_timer(self, event): 
-		message = String("hello_world")  
-		self.sort_string_puplisher.publish(message) 
+		rospy.spin()
+		
 
 if __name__ == "__main__":
-	rospy.init_node("UI_node")
-	node = UI()
-	rospy.spin()
+	node = UI_node()
 
