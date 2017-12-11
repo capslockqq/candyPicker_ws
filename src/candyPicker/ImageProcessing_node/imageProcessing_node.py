@@ -21,7 +21,7 @@ class imageProcessing_node():
         print "imageProc callback function"
         arr = [10,10,10]
         print message
-        self.MMsPixelCord_publisher.publish("data:", arr)
+        self.MMsPixelCord_publisher.publish(std_msgs.msg.Int32MultiArray(arr))
             
     def callbackDoneMoving(info, message):
         self.AllowedToProcessImage = True
