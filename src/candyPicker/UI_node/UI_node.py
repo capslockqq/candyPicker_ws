@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from std_msgs.msg import Bool, String
+from std_msgs.msg import Bool, String, Int32MultiArray
 import rospy
 
 class UI_node():

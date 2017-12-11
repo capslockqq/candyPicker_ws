@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from std_msgs.msg import String
+from std_msgs.msg import Int32MultiArray, String, Bool
 import rospy
 
 class imageProcessing_node():
@@ -11,12 +11,12 @@ class imageProcessing_node():
         #Used for calibrating the cameras coordinate system
         self.refPixelCord_publisher = rospy.Publisher("refPixelCord", Int32MultiArray)
         
-        self.AllowedToProcessImage = true
+        self.AllowedToProcessImage = True
         rospy.spin()
         
         
     def callback(info, message):
-        if (self.AllowedToProcessImage == true):
+        if (self.AllowedToProcessImage == True):
             self.array = [12,23,45]
             MMS.PixelCord_publisher.Publish(self.array)
 
