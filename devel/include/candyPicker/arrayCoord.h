@@ -65,7 +65,7 @@ struct arrayCoord_
 
 
 
-   typedef std::vector<int32_t, typename ContainerAllocator::template rebind<int32_t>::other >  _data_type;
+   typedef std::vector<float, typename ContainerAllocator::template rebind<float>::other >  _data_type;
   _data_type data;
 
 
@@ -146,12 +146,12 @@ struct MD5Sum< ::candyPicker::arrayCoord_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "563b27884d008b0d2adff54dc1f9e4f5";
+    return "420cd38b6b071cd49f2970c3e2cee511";
   }
 
   static const char* value(const ::candyPicker::arrayCoord_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x563b27884d008b0dULL;
-  static const uint64_t static_value2 = 0x2adff54dc1f9e4f5ULL;
+  static const uint64_t static_value1 = 0x420cd38b6b071cd4ULL;
+  static const uint64_t static_value2 = 0x9f2970c3e2cee511ULL;
 };
 
 template<class ContainerAllocator>
@@ -170,7 +170,7 @@ struct Definition< ::candyPicker::arrayCoord_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "int32[] data\n\
+    return "float32[] data\n\
 ";
   }
 
@@ -212,7 +212,7 @@ struct Printer< ::candyPicker::arrayCoord_<ContainerAllocator> >
     for (size_t i = 0; i < v.data.size(); ++i)
     {
       s << indent << "  data[" << i << "]: ";
-      Printer<int32_t>::stream(s, indent + "  ", v.data[i]);
+      Printer<float>::stream(s, indent + "  ", v.data[i]);
     }
   }
 };

@@ -10,8 +10,8 @@
   ((data
     :reader data
     :initarg :data
-    :type (cl:vector cl:integer)
-   :initform (cl:make-array 0 :element-type 'cl:integer :initial-element 0)))
+    :type (cl:vector cl:float)
+   :initform (cl:make-array 0 :element-type 'cl:float :initial-element 0.0)))
 )
 
 (cl:defclass arrayCoord (<arrayCoord>)
@@ -33,12 +33,11 @@
     (cl:write-byte (cl:ldb (cl:byte 8 8) __ros_arr_len) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 16) __ros_arr_len) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 24) __ros_arr_len) ostream))
-  (cl:map cl:nil #'(cl:lambda (ele) (cl:let* ((signed ele) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 4294967296) signed)))
-    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 24) unsigned) ostream)
-    ))
+  (cl:map cl:nil #'(cl:lambda (ele) (cl:let ((bits (roslisp-utils:encode-single-float-bits ele)))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)))
    (cl:slot-value msg 'data))
 )
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <arrayCoord>) istream)
@@ -51,12 +50,12 @@
   (cl:setf (cl:slot-value msg 'data) (cl:make-array __ros_arr_len))
   (cl:let ((vals (cl:slot-value msg 'data)))
     (cl:dotimes (i __ros_arr_len)
-    (cl:let ((unsigned 0))
-      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 16) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 24) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:aref vals i) (cl:if (cl:< unsigned 2147483648) unsigned (cl:- unsigned 4294967296)))))))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+    (cl:setf (cl:aref vals i) (roslisp-utils:decode-single-float-bits bits))))))
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<arrayCoord>)))
@@ -67,16 +66,16 @@
   "candyPicker/arrayCoord")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<arrayCoord>)))
   "Returns md5sum for a message object of type '<arrayCoord>"
-  "563b27884d008b0d2adff54dc1f9e4f5")
+  "420cd38b6b071cd49f2970c3e2cee511")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'arrayCoord)))
   "Returns md5sum for a message object of type 'arrayCoord"
-  "563b27884d008b0d2adff54dc1f9e4f5")
+  "420cd38b6b071cd49f2970c3e2cee511")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<arrayCoord>)))
   "Returns full string definition for message of type '<arrayCoord>"
-  (cl:format cl:nil "int32[] data~%~%~%"))
+  (cl:format cl:nil "float32[] data~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'arrayCoord)))
   "Returns full string definition for message of type 'arrayCoord"
-  (cl:format cl:nil "int32[] data~%~%~%"))
+  (cl:format cl:nil "float32[] data~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <arrayCoord>))
   (cl:+ 0
      4 (cl:reduce #'cl:+ (cl:slot-value msg 'data) :key #'(cl:lambda (ele) (cl:declare (cl:ignorable ele)) (cl:+ 4)))

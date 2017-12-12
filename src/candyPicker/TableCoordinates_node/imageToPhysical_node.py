@@ -18,7 +18,7 @@ class imageToPhysical_node():
         print "CallBack_imageToPhysical \r"
         print message, "\r"
         if self.refCoord != [0, 0]: 
-            self.pixel2physical = pixelCoord2PhysicalCoord.pixelCoord2PhysicalCoord(message.data)    
+            self.pixel2physical = pixelCoord2PhysicalCoord.pixelCoord2PhysicalCoord(self.refCoord)    
             X, Y = self.pixel2physical.pixel2Metric(message.data)
             physicalCoord = arrayCoord()
             physicalCoord.data = [X,Y, 0]      

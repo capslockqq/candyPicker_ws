@@ -1,1 +1,1 @@
-int32[] arrayCoord
+int32[] data

@@ -27,7 +27,7 @@ class imageProcessing_node():
         
         
     def callbackRef(self,message):
-        xref,yref = self.detectedRefPixelCoord.getRef(processedSingleColorImgRef)
+        xref,yref = self.detectedRefPixelCoord.getRef()
         pixelCoord = arrayCoord()
         pixelCoord.data = [xref, yref]
         self.refPixelCord_publisher.publish(pixelCoord)

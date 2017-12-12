@@ -83,7 +83,7 @@ class processRawImg():
         #edges = cv2.Canny(refGray,100,140)
         #cv2.imshow('Canny',edges)
     
-        ret,refTh1 = cv2.threshold(refGray,100,255,cv2.THRESH_BINARY)
+        ret,refTh1 = cv2.threshold(refGray,70,255,cv2.THRESH_BINARY)
         cv2.imshow('RefThresholded',refTh1)
         
         cv2.imwrite('/home/ubuntu/candyPicker_ws/src/candyPicker/ImageProcessing_node/thresholded.jpg',refTh1)
@@ -107,6 +107,6 @@ class processRawImg():
         return img
 
     def cropPic(self, image):
-        croppedImage = image[100:300, 100:600]
+        croppedImage = image[70:320, 0:640]
         return croppedImage
            

@@ -6,14 +6,14 @@ import struct
 
 
 class arrayCoord(genpy.Message):
-  _md5sum = "563b27884d008b0d2adff54dc1f9e4f5"
+  _md5sum = "420cd38b6b071cd49f2970c3e2cee511"
   _type = "candyPicker/arrayCoord"
   _has_header = False #flag to mark the presence of a Header object
-  _full_text = """int32[] data
+  _full_text = """float32[] data
 
 """
   __slots__ = ['data']
-  _slot_types = ['int32[]']
+  _slot_types = ['float32[]']
 
   def __init__(self, *args, **kwds):
     """
@@ -51,7 +51,7 @@ class arrayCoord(genpy.Message):
     try:
       length = len(self.data)
       buff.write(_struct_I.pack(length))
-      pattern = '<%si'%length
+      pattern = '<%sf'%length
       buff.write(struct.pack(pattern, *self.data))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
@@ -66,7 +66,7 @@ class arrayCoord(genpy.Message):
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
-      pattern = '<%si'%length
+      pattern = '<%sf'%length
       start = end
       end += struct.calcsize(pattern)
       self.data = struct.unpack(pattern, str[start:end])
@@ -84,7 +84,7 @@ class arrayCoord(genpy.Message):
     try:
       length = len(self.data)
       buff.write(_struct_I.pack(length))
-      pattern = '<%si'%length
+      pattern = '<%sf'%length
       buff.write(self.data.tostring())
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
@@ -100,10 +100,10 @@ class arrayCoord(genpy.Message):
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
-      pattern = '<%si'%length
+      pattern = '<%sf'%length
       start = end
       end += struct.calcsize(pattern)
-      self.data = numpy.frombuffer(str[start:end], dtype=numpy.int32, count=length)
+      self.data = numpy.frombuffer(str[start:end], dtype=numpy.float32, count=length)
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
