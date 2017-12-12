@@ -53,6 +53,7 @@ class UI():
             if (input == '9'):
                 print ("Calibrating camera...  \r")
                 self.UINode.fullyErrect()
+                self.UINode.refSetup()
                 
             if (input == '\x1b'):
                 print ("Terminating program...  \r")

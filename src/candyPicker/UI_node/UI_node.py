@@ -7,6 +7,7 @@ class UI_node():
 		rospy.init_node("UI_node")
 		self.Sort_publisher = rospy.Publisher("sort", String)
 		self.FullyErrect_publisher = rospy.Publisher("fullyErrect", Bool)
+		self.RefSetup_publisher = rospy.Publisher("refSetup", Bool)
 		someUI = UI.UI(self)
 		rospy.spin()
 		
@@ -18,6 +19,11 @@ class UI_node():
 		a = Bool()
 		a.data = True
 		self.FullyErrect_publisher.publish(a);
+		
+	def refSetup(self):
+		a = Bool()
+		a.data = True
+		self.RefSetup_publisher.publish(a)
 if __name__ == "__main__":
 	
 	node = UI_node()
