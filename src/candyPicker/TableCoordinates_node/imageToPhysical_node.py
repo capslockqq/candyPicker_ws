@@ -14,6 +14,7 @@ class imageToPhysical_node():
         
     def callbackMM(self, message):
         print "CallBack_imageToPhysical \r"
+        print message.data, "\r"
         a = arrayCoord()
         a.arrayCoord = [10,3,20]
         self.physicalCoord_publisher.publish(a)

@@ -2,6 +2,8 @@
 from std_msgs.msg import Int32MultiArray, String, Bool
 import rospy
 from candyPicker.msg import arrayCoord
+import processRawImg
+import DetectMM
 class imageProcessing_node():
     def __init__(self):
         rospy.init_node('ImageProcessing_node', anonymous=True)
@@ -11,18 +13,22 @@ class imageProcessing_node():
         self.MMsPixelCord_publisher = rospy.Publisher("MMsPixelCoord", arrayCoord)
         #Used for calibrating the cameras coordinate system
         self.refPixelCord_publisher = rospy.Publisher("refPixelCoord", arrayCoord)
-        
+        self.processImgObject = processRawImg.processRawImg()
+        self.detectedMMrPixelCoord = DetectMM.DetectMM()
         self.AllowedToProcessImage = False
+        
         rospy.spin()
         
         
     def callbackSort(self, message):
         #if (self.AllowedToProcessImage == True):
         print "imageProc callback function \r"
-        a = arrayCoord()
-        a.arrayCoord = [10,3,20]
-        
-        self.MMsPixelCord_publisher.publish(a)
+        pixelCoord = arrayCoord()
+
+        processedSingleColorImg = self.processImgObject.getProcessedImg(message.data)
+        x,y = self.detectedMMrPixelCoord.getMMs(processedSingleColorImg)
+        pixelCoord.arrayCoord = [x, y]
+        self.MMsPixelCord_publisher.publish(pixelCoord)
             
     def callbackDoneMoving(self, message):
         self.AllowedToProcessImage = True
