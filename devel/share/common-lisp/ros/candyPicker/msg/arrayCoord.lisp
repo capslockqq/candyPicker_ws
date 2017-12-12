@@ -7,9 +7,9 @@
 ;//! \htmlinclude arrayCoord.msg.html
 
 (cl:defclass <arrayCoord> (roslisp-msg-protocol:ros-message)
-  ((arrayCoord
-    :reader arrayCoord
-    :initarg :arrayCoord
+  ((data
+    :reader data
+    :initarg :data
     :type (cl:vector cl:integer)
    :initform (cl:make-array 0 :element-type 'cl:integer :initial-element 0)))
 )
@@ -22,13 +22,13 @@
   (cl:unless (cl:typep m 'arrayCoord)
     (roslisp-msg-protocol:msg-deprecation-warning "using old message class name candyPicker-msg:<arrayCoord> is deprecated: use candyPicker-msg:arrayCoord instead.")))
 
-(cl:ensure-generic-function 'arrayCoord-val :lambda-list '(m))
-(cl:defmethod arrayCoord-val ((m <arrayCoord>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader candyPicker-msg:arrayCoord-val is deprecated.  Use candyPicker-msg:arrayCoord instead.")
-  (arrayCoord m))
+(cl:ensure-generic-function 'data-val :lambda-list '(m))
+(cl:defmethod data-val ((m <arrayCoord>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader candyPicker-msg:data-val is deprecated.  Use candyPicker-msg:data instead.")
+  (data m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <arrayCoord>) ostream)
   "Serializes a message object of type '<arrayCoord>"
-  (cl:let ((__ros_arr_len (cl:length (cl:slot-value msg 'arrayCoord))))
+  (cl:let ((__ros_arr_len (cl:length (cl:slot-value msg 'data))))
     (cl:write-byte (cl:ldb (cl:byte 8 0) __ros_arr_len) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) __ros_arr_len) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 16) __ros_arr_len) ostream)
@@ -39,7 +39,7 @@
     (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 24) unsigned) ostream)
     ))
-   (cl:slot-value msg 'arrayCoord))
+   (cl:slot-value msg 'data))
 )
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <arrayCoord>) istream)
   "Deserializes a message object of type '<arrayCoord>"
@@ -48,8 +48,8 @@
     (cl:setf (cl:ldb (cl:byte 8 8) __ros_arr_len) (cl:read-byte istream))
     (cl:setf (cl:ldb (cl:byte 8 16) __ros_arr_len) (cl:read-byte istream))
     (cl:setf (cl:ldb (cl:byte 8 24) __ros_arr_len) (cl:read-byte istream))
-  (cl:setf (cl:slot-value msg 'arrayCoord) (cl:make-array __ros_arr_len))
-  (cl:let ((vals (cl:slot-value msg 'arrayCoord)))
+  (cl:setf (cl:slot-value msg 'data) (cl:make-array __ros_arr_len))
+  (cl:let ((vals (cl:slot-value msg 'data)))
     (cl:dotimes (i __ros_arr_len)
     (cl:let ((unsigned 0))
       (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
@@ -67,22 +67,22 @@
   "candyPicker/arrayCoord")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<arrayCoord>)))
   "Returns md5sum for a message object of type '<arrayCoord>"
-  "aa2f1e5568cfd30f3f7a43cd3c032633")
+  "563b27884d008b0d2adff54dc1f9e4f5")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'arrayCoord)))
   "Returns md5sum for a message object of type 'arrayCoord"
-  "aa2f1e5568cfd30f3f7a43cd3c032633")
+  "563b27884d008b0d2adff54dc1f9e4f5")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<arrayCoord>)))
   "Returns full string definition for message of type '<arrayCoord>"
-  (cl:format cl:nil "int32[] arrayCoord~%~%~%"))
+  (cl:format cl:nil "int32[] data~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'arrayCoord)))
   "Returns full string definition for message of type 'arrayCoord"
-  (cl:format cl:nil "int32[] arrayCoord~%~%~%"))
+  (cl:format cl:nil "int32[] data~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <arrayCoord>))
   (cl:+ 0
-     4 (cl:reduce #'cl:+ (cl:slot-value msg 'arrayCoord) :key #'(cl:lambda (ele) (cl:declare (cl:ignorable ele)) (cl:+ 4)))
+     4 (cl:reduce #'cl:+ (cl:slot-value msg 'data) :key #'(cl:lambda (ele) (cl:declare (cl:ignorable ele)) (cl:+ 4)))
 ))
 (cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <arrayCoord>))
   "Converts a ROS message object to a list"
   (cl:list 'arrayCoord
-    (cl:cons ':arrayCoord (arrayCoord msg))
+    (cl:cons ':data (data msg))
 ))

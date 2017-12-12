@@ -57,16 +57,16 @@ struct arrayCoord_
   typedef arrayCoord_<ContainerAllocator> Type;
 
   arrayCoord_()
-    : arrayCoord()  {
+    : data()  {
     }
   arrayCoord_(const ContainerAllocator& _alloc)
-    : arrayCoord(_alloc)  {
+    : data(_alloc)  {
     }
 
 
 
-   typedef std::vector<int32_t, typename ContainerAllocator::template rebind<int32_t>::other >  _arrayCoord_type;
-  _arrayCoord_type arrayCoord;
+   typedef std::vector<int32_t, typename ContainerAllocator::template rebind<int32_t>::other >  _data_type;
+  _data_type data;
 
 
 
@@ -146,12 +146,12 @@ struct MD5Sum< ::candyPicker::arrayCoord_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "aa2f1e5568cfd30f3f7a43cd3c032633";
+    return "563b27884d008b0d2adff54dc1f9e4f5";
   }
 
   static const char* value(const ::candyPicker::arrayCoord_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xaa2f1e5568cfd30fULL;
-  static const uint64_t static_value2 = 0x3f7a43cd3c032633ULL;
+  static const uint64_t static_value1 = 0x563b27884d008b0dULL;
+  static const uint64_t static_value2 = 0x2adff54dc1f9e4f5ULL;
 };
 
 template<class ContainerAllocator>
@@ -170,7 +170,7 @@ struct Definition< ::candyPicker::arrayCoord_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "int32[] arrayCoord\n\
+    return "int32[] data\n\
 ";
   }
 
@@ -189,7 +189,7 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
-      stream.next(m.arrayCoord);
+      stream.next(m.data);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER;
@@ -208,11 +208,11 @@ struct Printer< ::candyPicker::arrayCoord_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::candyPicker::arrayCoord_<ContainerAllocator>& v)
   {
-    s << indent << "arrayCoord[]" << std::endl;
-    for (size_t i = 0; i < v.arrayCoord.size(); ++i)
+    s << indent << "data[]" << std::endl;
+    for (size_t i = 0; i < v.data.size(); ++i)
     {
-      s << indent << "  arrayCoord[" << i << "]: ";
-      Printer<int32_t>::stream(s, indent + "  ", v.arrayCoord[i]);
+      s << indent << "  data[" << i << "]: ";
+      Printer<int32_t>::stream(s, indent + "  ", v.data[i]);
     }
   }
 };

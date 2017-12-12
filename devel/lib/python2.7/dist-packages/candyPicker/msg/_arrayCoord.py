@@ -6,13 +6,13 @@ import struct
 
 
 class arrayCoord(genpy.Message):
-  _md5sum = "aa2f1e5568cfd30f3f7a43cd3c032633"
+  _md5sum = "563b27884d008b0d2adff54dc1f9e4f5"
   _type = "candyPicker/arrayCoord"
   _has_header = False #flag to mark the presence of a Header object
-  _full_text = """int32[] arrayCoord
+  _full_text = """int32[] data
 
 """
-  __slots__ = ['arrayCoord']
+  __slots__ = ['data']
   _slot_types = ['int32[]']
 
   def __init__(self, *args, **kwds):
@@ -23,7 +23,7 @@ class arrayCoord(genpy.Message):
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       arrayCoord
+       data
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -32,10 +32,10 @@ class arrayCoord(genpy.Message):
     if args or kwds:
       super(arrayCoord, self).__init__(*args, **kwds)
       #message fields cannot be None, assign default values for those that are
-      if self.arrayCoord is None:
-        self.arrayCoord = []
+      if self.data is None:
+        self.data = []
     else:
-      self.arrayCoord = []
+      self.data = []
 
   def _get_types(self):
     """
@@ -49,10 +49,10 @@ class arrayCoord(genpy.Message):
     :param buff: buffer, ``StringIO``
     """
     try:
-      length = len(self.arrayCoord)
+      length = len(self.data)
       buff.write(_struct_I.pack(length))
       pattern = '<%si'%length
-      buff.write(struct.pack(pattern, *self.arrayCoord))
+      buff.write(struct.pack(pattern, *self.data))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
 
@@ -69,7 +69,7 @@ class arrayCoord(genpy.Message):
       pattern = '<%si'%length
       start = end
       end += struct.calcsize(pattern)
-      self.arrayCoord = struct.unpack(pattern, str[start:end])
+      self.data = struct.unpack(pattern, str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -82,10 +82,10 @@ class arrayCoord(genpy.Message):
     :param numpy: numpy python module
     """
     try:
-      length = len(self.arrayCoord)
+      length = len(self.data)
       buff.write(_struct_I.pack(length))
       pattern = '<%si'%length
-      buff.write(self.arrayCoord.tostring())
+      buff.write(self.data.tostring())
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
 
@@ -103,7 +103,7 @@ class arrayCoord(genpy.Message):
       pattern = '<%si'%length
       start = end
       end += struct.calcsize(pattern)
-      self.arrayCoord = numpy.frombuffer(str[start:end], dtype=numpy.int32, count=length)
+      self.data = numpy.frombuffer(str[start:end], dtype=numpy.int32, count=length)
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill

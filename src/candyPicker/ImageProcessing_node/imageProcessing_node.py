@@ -4,6 +4,8 @@ import rospy
 from candyPicker.msg import arrayCoord
 import processRawImg
 import DetectMM
+import numpy as np
+
 class imageProcessing_node():
     def __init__(self):
         rospy.init_node('ImageProcessing_node', anonymous=True)
@@ -27,7 +29,7 @@ class imageProcessing_node():
 
         processedSingleColorImg = self.processImgObject.getProcessedImg(message.data)
         x,y = self.detectedMMrPixelCoord.getMMs(processedSingleColorImg)
-        pixelCoord.arrayCoord = [x, y]
+        pixelCoord.data = [x, y]
         self.MMsPixelCord_publisher.publish(pixelCoord)
             
     def callbackDoneMoving(self, message):

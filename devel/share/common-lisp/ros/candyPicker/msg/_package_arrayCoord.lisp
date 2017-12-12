@@ -1,4 +1,4 @@
 (cl:in-package candyPicker-msg)
-(cl:export '(ARRAYCOORD-VAL
-          ARRAYCOORD
+(cl:export '(DATA-VAL
+          DATA
 ))

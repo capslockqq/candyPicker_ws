@@ -43,7 +43,7 @@ class processRawImg():
       
     def getProcessedImg(self, color):
         rawImg = self.getFromWebcam()
-
+        cv2.imwrite('/home/ubuntu/candyPicker_ws/src/candyPicker/ImageProcessing_node/rawSaved.jpg',rawImg)
         if (color == "blue"):
             upper = upper_blue
             lower = lower_blue
@@ -60,9 +60,17 @@ class processRawImg():
 
         singleColorImg = self.extract_single_color_range(rawImg, lower, upper)
         
+        cv2.imwrite('/home/ubuntu/candyPicker_ws/src/candyPicker/ImageProcessing_node/singleColor.jpg',singleColorImg)
+        
         croppedImg = self.cropPic(singleColorImg)
         
+        cv2.imwrite('/home/ubuntu/candyPicker_ws/src/candyPicker/ImageProcessing_node/cropped.jpg',croppedImg)
+        
         processedImg = self.optimizePic(croppedImg)
+        
+        cv2.imwrite('/home/ubuntu/candyPicker_ws/src/candyPicker/ImageProcessing_node/processed.jpg',processedImg)
+        
+        
         
         return processedImg
     
@@ -70,11 +78,15 @@ class processRawImg():
         refGray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         cv2.imshow("refGray",refGray)
         
+        cv2.imwrite('/home/ubuntu/candyPicker_ws/src/candyPicker/ImageProcessing_node/gray.jpg',refGray)
+        
         #edges = cv2.Canny(refGray,100,140)
         #cv2.imshow('Canny',edges)
     
-        ret,refTh1 = cv2.threshold(refGray,150,255,cv2.THRESH_BINARY_INV)
+        ret,refTh1 = cv2.threshold(refGray,100,255,cv2.THRESH_BINARY)
         cv2.imshow('RefThresholded',refTh1)
+        
+        cv2.imwrite('/home/ubuntu/candyPicker_ws/src/candyPicker/ImageProcessing_node/thresholded.jpg',refTh1)
     
         refDilated = cv2.dilate(refTh1,np.ones((2,2),np.uint8))
         cv2.imshow('RefDilated',refDilated)

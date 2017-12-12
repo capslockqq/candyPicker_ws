@@ -1,40 +1,47 @@
 import cv2
+import numpy as np
+
 
 class DetectMM():
     def getMMs(self, img):
         
         refMMs = self.findRefMMs()
         
-        cv2.imwrite('BGcopy.jpg',img)
+        cv2.imwrite('/home/ubuntu/candyPicker_ws/src/candyPicker/ImageProcessing_node/BGcopy.jpg',img)
+        BGcopy = cv2.imread('/home/ubuntu/candyPicker_ws/src/candyPicker/ImageProcessing_node/BGcopy.jpg')
         
-        Cnt, refHierarchy = cv2.findContours(imgClosed,cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
+        Cnt, refHierarchy = cv2.findContours(img,cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
    
         for b in Cnt:
-            cv2.drawContours(imageCopy,[b],0,(255,0,0),2)
+            cv2.drawContours(BGcopy,[b],0,(255,0,0),2)
    
-        cv2.imshow('allContours',imageCopy)
+        cv2.imshow('allContours',BGcopy)
         
         contoursSortedList = []
    
-        contoursSorted = sortContourSize(*Cnt)
+        contoursSorted = self.sortContourSize(*Cnt)
    
    
-        imageCopyNew = cv2.imread('BGcopy.jpg')
+        imageCopyNew = cv2.imread('/home/ubuntu/candyPicker_ws/src/candyPicker/ImageProcessing_node/BGcopy.jpg')
        
         for b in contoursSorted:
             cv2.drawContours(imageCopyNew,[b],0,(255,0,0),2)
    
         cv2.imshow('Found MMs by size',imageCopyNew)
         
-        imageCopyNew1 = cv2.imread('imageCopy.jpg')
+        imageCopyNew1 = cv2.imread('/home/ubuntu/candyPicker_ws/src/candyPicker/ImageProcessing_node/BGcopy.jpg')
         
-        matchResult = shapeMatchingContour(*contoursSorted)
+        matchResult = self.shapeMatchingContour(*contoursSorted)
         
         MMsFoundCnt = []
+        
         
         for i, cnt in enumerate(matchResult):
             if matchResult[i] < 0.13:
                 MMsFoundCnt.append(contoursSorted[i])
+        
+        print "MMfoundLengt"
+        print len(MMsFoundCnt)
         
         M = cv2.moments(contoursSorted[0])
         cX = int(M["m10"] / M["m00"])
@@ -46,9 +53,9 @@ class DetectMM():
     def shapeMatchingContour(self, *contourList):
         result = []
         for i,cnt in enumerate(contourList):
-            result.append(cv2.matchShapes(MMcntRef[0],cnt,1,0.0)) 
-            result[i] += cv2.matchShapes(MMcntRef[1],cnt,1,0.0)
-            result[i] += cv2.matchShapes(MMcntRef[2],cnt,1,0.0)
+            result.append(cv2.matchShapes(self.MMcntRef[0],cnt,1,0.0)) 
+            result[i] += cv2.matchShapes(self.MMcntRef[1],cnt,1,0.0)
+            result[i] += cv2.matchShapes(self.MMcntRef[2],cnt,1,0.0)
             result[i] = result[i]/3
     
         return result    
@@ -79,7 +86,7 @@ class DetectMM():
         return MMlist
     
     def findRefMMs(self):
-        refImage = cv2.imread('originalRef.jpg')
+        refImage = cv2.imread('/home/ubuntu/candyPicker_ws/src/candyPicker/ImageProcessing_node/originalRef.jpg')
         
         optimizedRef = self.optimizePic(refImage)
         
@@ -89,20 +96,20 @@ class DetectMM():
 
         sortContour = self.sortContourSize(*refCnt)
         
-        MMcntRef = []
+        self.MMcntRef = []
         
-        MMcntRef.append(sortContour[0]) #Area = 284
-        MMcntRef.append(sortContour[1]) #Area = 218
-        MMcntRef.append(sortContour[2]) #Area = 243
+        self.MMcntRef.append(sortContour[0]) #Area = 284
+        self.MMcntRef.append(sortContour[1]) #Area = 218
+        self.MMcntRef.append(sortContour[2]) #Area = 243
         
-        newRefImage = cv2.imread('originalRef.jpg')
+        newRefImage = cv2.imread('/home/ubuntu/candyPicker_ws/src/candyPicker/ImageProcessing_node/originalRef.jpg')
 
-        for b in MMcntRef:
+        for b in self.MMcntRef:
             cv2.drawContours(newRefImage,[b],0,(255,0,0),2)
 
         cv2.imshow('MMs detected',newRefImage)
         
-        return MMcntRef
+        return self.MMcntRef
 
     
     
