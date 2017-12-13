@@ -10,6 +10,7 @@ class pixelCoord2PhysicalCoord():
         self.refy = refCoordinates[1]
     
     def pixel2Metric(self, coordinates):
+        print "Ref coords: ", self.refx, self.refy, "\r"
         delta_r = self.refx - coordinates[0]
         delta_c = self.refy - coordinates[1] - 70
         print delta_r, delta_c

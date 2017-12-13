@@ -20,7 +20,7 @@ class DetectMM():
         contoursSortedList = []
    
         contoursSorted = self.sortContourSize(*Cnt)
-   
+        print "Legnth of countour ", len(contoursSorted), "\r"
    
         imageCopyNew = cv2.imread('/home/ubuntu/candyPicker_ws/src/candyPicker/ImageProcessing_node/BGcopy.jpg')
        
@@ -37,13 +37,15 @@ class DetectMM():
         
         
         for i, cnt in enumerate(matchResult):
-            if matchResult[i] < 0.13:
+            print "Matchersult", matchResult[i]
+            if matchResult[i] < 0.15:
+                
                 MMsFoundCnt.append(contoursSorted[i])
         
-        print "MMfoundLengt"
+        print "MMfoundLengt"    
         print len(MMsFoundCnt)
         
-        M = cv2.moments(contoursSorted[0])
+        M = cv2.moments(MMsFoundCnt[0])
         cX = int(M["m10"] / M["m00"])
         cY = int(M["m01"] / M["m00"])  
         
@@ -70,10 +72,10 @@ class DetectMM():
         ret,refTh1 = cv2.threshold(refGray,150,255,cv2.THRESH_BINARY_INV)
         cv2.imshow('RefThresholded',refTh1)
     
-        refDilated = cv2.dilate(refTh1,np.ones((2,2),np.uint8))
+        refDilated = cv2.dilate(refTh1,np.ones((1,1),np.uint8))
         cv2.imshow('RefDilated',refDilated)
     
-        refClosed = cv2.morphologyEx(refDilated, cv2.MORPH_CLOSE,np.ones((9,9),np.uint8))
+        refClosed = cv2.morphologyEx(refDilated, cv2.MORPH_CLOSE,np.ones((3,3),np.uint8))
         cv2.imshow('RefCload',refClosed)
         return refClosed
         
@@ -81,7 +83,15 @@ class DetectMM():
         MMlist = []
         for i,cnt in enumerate(contourList):
             area = cv2.contourArea(cnt)
-            if area > 140 and area < 350:
+            if area > 130 and area < 350:
+                MMlist.append(contourList[i])
+        return MMlist
+    
+    def sortContourSizeRef(self, *contourList):
+        MMlist = []
+        for i,cnt in enumerate(contourList):
+            area = cv2.contourArea(cnt)
+            if area > 180 and area < 350:
                 MMlist.append(contourList[i])
         return MMlist
     
@@ -94,7 +104,7 @@ class DetectMM():
         
         sortContour = []
 
-        sortContour = self.sortContourSize(*refCnt)
+        sortContour = self.sortContourSizeRef(*refCnt)
         
         self.MMcntRef = []
         
