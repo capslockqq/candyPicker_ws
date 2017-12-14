@@ -9,11 +9,8 @@ upper_blue = np.array([130,255,255])
 lower_green = np.array([40,50,50])
 upper_green = np.array([75,255,255])
 
-lower_brown1 = np.array([0,50,70])
-upper_brown1 = np.array([30,255,128])
-
-lower_brown1 = np.array([160,50,70])
-upper_brown1 = np.array([179,255,128])
+lower_yellow = np.array([15,100,100])
+upper_yellow = np.array([35,255,255])
 
 lower_red1 = np.array([0,50,50])
 upper_red1 = np.array([30,255,255])
@@ -50,6 +47,7 @@ class processRawImg():
         colorRed = False 
         colorBrown = False 
         calibrateForBlue = False
+
         if (color == "Blue"):
             upper = upper_blue
             lower = lower_blue
@@ -59,10 +57,14 @@ class processRawImg():
             upper = upper_green
             lower = lower_green
             
-        elif (color == "Brown"):
-            colorBrown = True
+        elif (color == "Yellow"):
+            upper = upper_yellow
+            lower = lower_yellow
+            
             
         elif (color == "Red"):
+            upper = upper_red1
+            lower = lower_red1
             colorRed = True
             
         
@@ -122,11 +124,7 @@ class processRawImg():
         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
         if (red == True):
             mask = cv2.inRange(hsv, lower_red1, upper_red1)
-            mask += cv2.inRange(hsv, lower_red2, upper_red2)
-            
-        if (red == True):
-            mask = cv2.inRange(hsv, lower_brown1, upper_brown1)
-            mask += cv2.inRange(hsv, lower_brown2, upper_brown2)   
+            mask += cv2.inRange(hsv, lower_red2, upper_red2)  
         
             
         else:

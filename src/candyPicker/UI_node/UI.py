@@ -60,6 +60,9 @@ class UI():
             if (input == '5'):
                 self.printUI()
                 
+            if (input == '8'):
+                self.UINode.sort("Yellow")
+                
             if (input == '9'):
                 print ("Calibrating camera...  \r")
                 self.UINode.fullyErrect()

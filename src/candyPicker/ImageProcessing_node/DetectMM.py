@@ -129,7 +129,7 @@ class DetectMM():
             return x,y
             
         elif (color == "Green"):
-            x = 40
+            x = 100
             y = 380
             return x,y
             
@@ -138,9 +138,9 @@ class DetectMM():
             y = 380
             return x,y
             
-        elif (color == "Brown"):
-            x = -84.827
-            y = 212.345
+        elif (color == "Yellow"):
+            x = 100
+            y = 180
             return x,y
             
         else:
