@@ -18,6 +18,7 @@ class moveRobot_node():
         self.doneMoving_publisher = rospy.Publisher("doneMoving", Bool)
         self.client = actionlib.SimpleActionClient("/arm_controller/follow_joint_trajectory", FollowJointTrajectoryAction)
         self.my_publisher = rospy.Publisher("/gripper/command",Float64)
+        
 
         
         self.move = moveRobot.moveRobot()

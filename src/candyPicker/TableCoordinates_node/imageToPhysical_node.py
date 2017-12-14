@@ -11,6 +11,7 @@ class imageToPhysical_node():
         rospy.Subscriber("refPixelCoord", arrayCoord, self.callbackRef)
         rospy.Subscriber("fullyErrect", Bool, self.callbackFullyErrect)
         self.physicalCoord_publisher = rospy.Publisher("physicalCoord", arrayCoord)
+        self.MessagePublisher = rospy.Publisher("messageHandling", String)
         
         self.refCoord = [0,0]
         rospy.spin()
@@ -24,6 +25,9 @@ class imageToPhysical_node():
             physicalCoord = arrayCoord()
             physicalCoord.data = [X*100,-Y*100, 0.7,des_X*100,des_Y*100,7]      
             self.physicalCoord_publisher.publish(physicalCoord)
+            
+        else:
+            self.MessagePublisher("Please take a ref picture before using the robot \n")
         
     def callbackRef(self, message):
         print message 
