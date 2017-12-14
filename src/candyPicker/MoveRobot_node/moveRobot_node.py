@@ -29,21 +29,26 @@ class moveRobot_node():
     def callback(self,coords):
         print "Callback moveRobot \r"
         print coords, "\r"
-        goal = self.move.coordToGoal(coords.data)
+        self.goalCoord = [coords.data[0],coords.data[1],coords.data[2]]
+        self.desCoord = [coords.data[3],coords.data[4],coords.data[5]]
+        
+        self.goal = self.move.coordToGoal(self.goalCoord)
         
         
         self.client.wait_for_server()
         self.my_publisher.publish(0)
         self.client.wait_for_result()
-        self.client.send_goal(goal)
+        self.client.send_goal(self.goal)
         self.client.wait_for_result()
         rospy.sleep(1)
         self.my_publisher.publish(1)
-        rospy.sleep(1)
+        rospy.sleep(1)  
         self.client.wait_for_server()
-        goal = self.move.coordToGoal([0,0,45])
-        self.client.send_goal(goal)
+        self.goal = self.move.coordToGoal(self.desCoord)
+        self.client.send_goal(self.goal)
         self.client.wait_for_result()
+        rospy.sleep(1)
+        self.my_publisher.publish(1)
         self.doneMoving()
         
         

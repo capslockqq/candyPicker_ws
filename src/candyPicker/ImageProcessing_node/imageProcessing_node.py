@@ -21,6 +21,7 @@ class imageProcessing_node():
         self.processImgObjectRef = processRawImg.processRawImg()
         self.detectedMMrPixelCoord = DetectMM.DetectMM()
         self.detectedRefPixelCoord = DetectRefobj.DetectRefobj()
+        self.detectedDesCoord = DetectMM.DetectMM()
         self.AllowedToProcessImage = False
         
         rospy.spin()
@@ -38,8 +39,9 @@ class imageProcessing_node():
         pixelCoord = arrayCoord()
 
         processedSingleColorImg = self.processImgObject.getProcessedImg(message.data)
+        x_des,y_des =  self.detectedDesCoord.getDesCoord(message.data)
         x,y = self.detectedMMrPixelCoord.getMMs(processedSingleColorImg)
-        pixelCoord.data = [x, y]
+        pixelCoord.data = [x, y,x_des,y_des]
         self.MMsPixelCord_publisher.publish(pixelCoord)
             
     def callbackDoneMoving(self, message):

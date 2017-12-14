@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import math
 
 
 class DetectMM():
@@ -48,7 +49,7 @@ class DetectMM():
         M = cv2.moments(MMsFoundCnt[0])
         cX = int(M["m10"] / M["m00"])
         cY = int(M["m01"] / M["m00"])  
-        
+        print "X: ", cX, "Y: ", cY, "\r"
         return cX,cY
          
     
@@ -120,6 +121,30 @@ class DetectMM():
         cv2.imshow('MMs detected',newRefImage)
         
         return self.MMcntRef
+    
+    def getDesCoord(self,color):
+        if (color == "Blue"):
+            x = 600
+            y = 180
+            return x,y
+            
+        elif (color == "Green"):
+            x = 40
+            y = 380
+            return x,y
+            
+        elif (color == "Red"):
+            x = 600
+            y = 380
+            return x,y
+            
+        elif (color == "Brown"):
+            x = -84.827
+            y = 212.345
+            return x,y
+            
+        else:
+            return 0
 
     
     

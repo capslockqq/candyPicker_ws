@@ -9,8 +9,11 @@ upper_blue = np.array([130,255,255])
 lower_green = np.array([40,50,50])
 upper_green = np.array([75,255,255])
 
-lower_yellow = np.array([20,50,50])
-upper_yellow = np.array([30,255,255])
+lower_brown1 = np.array([0,50,70])
+upper_brown1 = np.array([30,255,128])
+
+lower_brown1 = np.array([160,50,70])
+upper_brown1 = np.array([179,255,128])
 
 lower_red1 = np.array([0,50,50])
 upper_red1 = np.array([30,255,255])
@@ -45,6 +48,7 @@ class processRawImg():
         rawImg = self.getFromWebcam()
         cv2.imwrite('/home/ubuntu/candyPicker_ws/src/candyPicker/ImageProcessing_node/rawSaved.jpg',rawImg)
         colorRed = False 
+        colorBrown = False 
         calibrateForBlue = False
         if (color == "Blue"):
             upper = upper_blue
@@ -54,20 +58,20 @@ class processRawImg():
         elif (color == "Green"):
             upper = upper_green
             lower = lower_green
-        elif (color == "Yellow"):
-            upper = upper_yellow
-            lower = lower_yellow 
+            
+        elif (color == "Brown"):
+            colorBrown = True
             
         elif (color == "Red"):
-            upper = upper_red1
-            lower = lower_red1
             colorRed = True
+            
+        
         else:
             lower = lower_blue
             upper = upper_blue
            
 
-        singleColorImg = self.extract_single_color_range(rawImg, lower, upper, colorRed)
+        singleColorImg = self.extract_single_color_range(rawImg, lower, upper, colorRed, colorBrown)
         
         cv2.imwrite('/home/ubuntu/candyPicker_ws/src/candyPicker/ImageProcessing_node/singleColor.jpg',singleColorImg)
         
@@ -109,7 +113,7 @@ class processRawImg():
         cv2.imwrite('/home/ubuntu/candyPicker_ws/src/candyPicker/ImageProcessing_node/refClosed.jpg',refClosed)
         return refClosed
     
-    def extract_single_color_range(self, image,lower,upper, red):
+    def extract_single_color_range(self, image,lower,upper, red, colorBrown):
         """
         Calculates a mask for which all pixels within the specified range is set to 1
         the ands this mask with the provided image such that color information is
@@ -119,6 +123,11 @@ class processRawImg():
         if (red == True):
             mask = cv2.inRange(hsv, lower_red1, upper_red1)
             mask += cv2.inRange(hsv, lower_red2, upper_red2)
+            
+        if (red == True):
+            mask = cv2.inRange(hsv, lower_brown1, upper_brown1)
+            mask += cv2.inRange(hsv, lower_brown2, upper_brown2)   
+        
             
         else:
             mask = cv2.inRange(hsv, lower, upper) 

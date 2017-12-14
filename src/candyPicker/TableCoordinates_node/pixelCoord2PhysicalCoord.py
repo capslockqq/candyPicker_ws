@@ -17,5 +17,12 @@ class pixelCoord2PhysicalCoord():
         delta_x = (self.Z*delta_r*self.Sx)/self.focalLength
         delta_y = (self.Z*delta_c*self.Sy)/self.focalLength
         
-        print delta_x,delta_y+0.02
-        return delta_x, delta_y+0.2
+        delta_rDes = self.refx - coordinates[2]
+        delta_cDes = self.refy - coordinates[3] 
+        print delta_r, delta_c
+        delta_xDes = (self.Z*delta_rDes*self.Sx)/self.focalLength
+        delta_yDes = (self.Z*delta_cDes*self.Sy)/self.focalLength
+        
+        
+        print delta_x,delta_y
+        return delta_x, delta_y+0.2,delta_xDes,delta_yDes+0.2
