@@ -9,11 +9,11 @@ upper_blue = np.array([130,255,255])
 lower_green = np.array([40,50,50])
 upper_green = np.array([75,255,255])
 
-lower_yellow = np.array([15,100,100])
+lower_yellow = np.array([10,100,100])
 upper_yellow = np.array([35,255,255])
 
 lower_red1 = np.array([0,50,50])
-upper_red1 = np.array([30,255,255])
+upper_red1 = np.array([25,255,255])
 
 lower_red2 = np.array([160,50,50])
 upper_red2 = np.array([179,255,255])

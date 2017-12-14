@@ -124,23 +124,23 @@ class DetectMM():
     
     def getDesCoord(self,color):
         if (color == "Blue"):
-            x = 600
-            y = 180
+            x = 500
+            y = 350
             return x,y
             
         elif (color == "Green"):
-            x = 100
-            y = 380
+            x = 20
+            y = 350
             return x,y
             
         elif (color == "Red"):
             x = 600
-            y = 380
+            y = 350
             return x,y
             
         elif (color == "Yellow"):
-            x = 100
-            y = 180
+            x = 110
+            y = 350
             return x,y
             
         else:

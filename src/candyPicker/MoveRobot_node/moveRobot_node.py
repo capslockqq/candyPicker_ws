@@ -31,6 +31,7 @@ class moveRobot_node():
         print coords, "\r"
         self.goalCoord = [coords.data[0],coords.data[1],coords.data[2]]
         self.desCoord = [coords.data[3],coords.data[4],coords.data[5]]
+        self.safetyHeight = [coords.data[0],coords.data[1], 10]
         
         self.goal = self.move.coordToGoal(self.goalCoord)
         
@@ -43,6 +44,10 @@ class moveRobot_node():
         rospy.sleep(1)
         self.my_publisher.publish(1)
         rospy.sleep(1)  
+        
+        self.client.wait_for_server()
+        self.safetyHeightGoal = self.move.coordToGoal(self.safetyHeight)
+        self.goal = self.move.coordToGoal(self.safetyHeightGoal)
         self.client.wait_for_server()
         self.goal = self.move.coordToGoal(self.desCoord)
         self.client.send_goal(self.goal)
