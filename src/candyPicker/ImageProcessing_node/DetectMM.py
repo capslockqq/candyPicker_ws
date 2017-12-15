@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import math
+import processRawImg
 
 
 class DetectMM():
@@ -18,39 +19,47 @@ class DetectMM():
    
         cv2.imshow('allContours',BGcopy)
         
-        contoursSortedList = []
-   
+        contoursSortedList = [] 
+        
         contoursSorted = self.sortContourSize(*Cnt)
-        print "Legnth of countour ", len(contoursSorted), "\r"
+        #No mms found
+
+        #print "Legnth of countour ", len(contoursSorted), "\r"
    
         imageCopyNew = cv2.imread('/home/ubuntu/candyPicker_ws/src/candyPicker/ImageProcessing_node/BGcopy.jpg')
        
-        for b in contoursSorted:
-            cv2.drawContours(imageCopyNew,[b],0,(255,0,0),2)
-   
-        cv2.imshow('Found MMs by size',imageCopyNew)
-        
-        imageCopyNew1 = cv2.imread('/home/ubuntu/candyPicker_ws/src/candyPicker/ImageProcessing_node/BGcopy.jpg')
-        
-        matchResult = self.shapeMatchingContour(*contoursSorted)
-        
-        MMsFoundCnt = []
-        
-        
-        for i, cnt in enumerate(matchResult):
-            print "Matchersult", matchResult[i]
-            if matchResult[i] < 0.15:
+        if (len(contoursSorted) != 0):
+            for b in contoursSorted:
+                cv2.drawContours(imageCopyNew,[b],0,(255,0,0),2)
                 
-                MMsFoundCnt.append(contoursSorted[i])
+                cv2.imshow('Found MMs by size',imageCopyNew)
         
-        print "MMfoundLengt"    
-        print len(MMsFoundCnt)
-        
-        M = cv2.moments(MMsFoundCnt[0])
-        cX = int(M["m10"] / M["m00"])
-        cY = int(M["m01"] / M["m00"])  
-        print "X: ", cX, "Y: ", cY, "\r"
-        return cX,cY
+            imageCopyNew1 = cv2.imread('/home/ubuntu/candyPicker_ws/src/candyPicker/ImageProcessing_node/BGcopy.jpg')
+            
+            matchResult = self.shapeMatchingContour(*contoursSorted)
+            
+            MMsFoundCnt = []
+            
+            
+            for i, cnt in enumerate(matchResult):
+                #print "Matchersult", matchResult[i]
+                if matchResult[i] < 0.11:                 
+                    MMsFoundCnt.append(contoursSorted[i])
+            
+            
+                    M = cv2.moments(MMsFoundCnt[0])
+                    cX = int(M["m10"] / M["m00"])
+                    cY = int(M["m01"] / M["m00"])  
+                    return cX,cY
+                
+                elif ((i+1) == len(contoursSorted) ):
+                    return -1, -1
+                
+                
+        else:
+            return -1,-1
+   
+
          
     
     def shapeMatchingContour(self, *contourList):

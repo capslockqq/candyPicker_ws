@@ -17,8 +17,7 @@ class imageToPhysical_node():
         rospy.spin()
         
     def callbackMM(self, message):
-        print "CallBack_imageToPhysical \r"
-        print message, "\r"
+        #print "CallBack_imageToPhysical \r"
         if self.refCoord != [0, 0]: 
             self.pixel2physical = pixelCoord2PhysicalCoord.pixelCoord2PhysicalCoord(self.refCoord)    
             Y, X, des_Y,des_X   = self.pixel2physical.pixel2Metric(message.data)
@@ -27,14 +26,17 @@ class imageToPhysical_node():
             self.physicalCoord_publisher.publish(physicalCoord)
             
         else:
-            self.MessagePublisher("Please take a ref picture before using the robot \n")
+            self.MessagePublisher.publish("Please take a ref picture before using the robot \n")
         
     def callbackRef(self, message):
-        print message 
+        #print message 
         self.refCoord = message.data
     
-    def callbackFullyErrect(info, message):
-        print message, "\r"
+    def callbackFullyErrect(self , message):
+        physicalCoord = arrayCoord()
+        physicalCoord.data = [0, 0, 45, 0,0,0]
+        self.physicalCoord_publisher.publish(physicalCoord)
+        #print message, "\r"
         
 if __name__ == "__main__":
     node = imageToPhysical_node()

@@ -22,9 +22,9 @@ class moveRobot():
                 "joint3",
                 "joint4"
                 ]
-        dur = rospy.Duration(1)
+        dur = rospy.Duration(1.3)
         xyz_positions = [coords]
-        print "efter vi gsnger", xyz_positions
+        #print "efter vi gsnger", xyz_positions
         # construct a list of joint positions by calling invkin for each xyz point
         for p in xyz_positions:
             jtp = JointTrajectoryPoint(positions=invkin(p),velocities=[0.2]*self.N_JOINTS ,time_from_start=dur)

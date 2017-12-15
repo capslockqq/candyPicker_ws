@@ -17,6 +17,7 @@ class UI():
         self.printWelcomeText()
         self.printOptions()
         if (self.UIHasBeenCreated == False):
+            self.UINode.fullyErrect()
             self.waitForInput()
             
     def clearScreen(self):
@@ -30,8 +31,9 @@ class UI():
         print "Press 1 for sorting all green pieces of candy \r"
         print "Press 2 for sorting all blue pieces of candy \r"
         print "Press 3 for sorting all red pieces of candy \r"
-        print "Press 4 for sorting all pieces of candy \r"
-        print "Press 5 for refreshing the UI \r"
+        print "Press 4 for sorting all yellow pieces of candy \r"
+        print "Press 5 for all piece of candy\r"
+        print "Press 8 for refrshing the UI\r"
         print "Press 9 for calibrating the camera \r"
         print "Press ESC for closing the application \r"
         
@@ -54,14 +56,15 @@ class UI():
                 self.UINode.sort("Red")
                 
             if (input == '4'):
+                print ("Sorting all yellow pieces of candy!  \r")
+                self.UINode.sort("Yellow")
+                
+            if (input == '5'):
                 print ("Sorting all pieces of candy!  \r")
                 self.UINode.sort("All")
                 
-            if (input == '5'):
-                self.printUI()
-                
             if (input == '8'):
-                self.UINode.sort("Yellow")
+                self.printUI()
                 
             if (input == '9'):
                 print ("Calibrating camera...  \r")

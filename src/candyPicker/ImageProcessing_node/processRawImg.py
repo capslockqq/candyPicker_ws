@@ -9,13 +9,13 @@ upper_blue = np.array([130,255,255])
 lower_green = np.array([40,50,50])
 upper_green = np.array([75,255,255])
 
-lower_yellow = np.array([10,100,100])
+lower_yellow = np.array([5,100,100])
 upper_yellow = np.array([35,255,255])
 
 lower_red1 = np.array([0,50,50])
-upper_red1 = np.array([25,255,255])
+upper_red1 = np.array([20,255,255])
 
-lower_red2 = np.array([160,50,50])
+lower_red2 = np.array([165,50,50])
 upper_red2 = np.array([179,255,255])
 
 
@@ -25,7 +25,7 @@ class processRawImg():
         """
         Fetches an image from the webcam
         """
-        print "try fetch from webcam..."
+        #print "try fetch from webcam..."
         stream=urllib.urlopen('http://192.168.0.20/image/jpeg.cgi')
         bytes=''
         bytes+=stream.read(64500)
@@ -67,7 +67,6 @@ class processRawImg():
             lower = lower_red1
             colorRed = True
             
-        
         else:
             lower = lower_blue
             upper = upper_blue
@@ -90,7 +89,7 @@ class processRawImg():
         return processedImg
     
     def optimizePic(self, image, calibrateForBlue):
-        closeVariable = 2
+        closeVariable = 4
         
         refGray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         cv2.imshow("refGray",refGray)
@@ -109,7 +108,7 @@ class processRawImg():
         cv2.imwrite('/home/ubuntu/candyPicker_ws/src/candyPicker/ImageProcessing_node/refdialated.jpg',refDilated)
         
         if (calibrateForBlue == True):
-            closeVariable = 4
+            closeVariable = 8
         
         refClosed = cv2.morphologyEx(refDilated, cv2.MORPH_CLOSE,np.ones((closeVariable,closeVariable),np.uint8))
         cv2.imwrite('/home/ubuntu/candyPicker_ws/src/candyPicker/ImageProcessing_node/refClosed.jpg',refClosed)
@@ -134,6 +133,6 @@ class processRawImg():
         return img
 
     def cropPic(self, image):
-        croppedImage = image[70:320, 0:640]
+        croppedImage = image[40:250, 0:640]
         return croppedImage
            

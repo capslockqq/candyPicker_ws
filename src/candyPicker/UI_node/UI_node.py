@@ -14,7 +14,12 @@ class UI_node():
 		rospy.spin()
 		
 	def sort(self, color):
-		self.Sort_publisher.publish(color);
+		self.topicColor = color
+		if (color == "All"):
+			self.color = "Green"
+			self.Sort_publisher.publish(self.color)
+		else:
+			self.Sort_publisher.publish(color);
 
 		
 	def fullyErrect(self):
@@ -28,7 +33,36 @@ class UI_node():
 		self.RefSetup_publisher.publish(a)
 		
 	def callbackMessageHandling(self, message):
-		self.UI_obj.PrintMessageFromNode(message.data)
+		
+		
+		if (message.data == "No more mms to be found"):
+			if (self.topicColor == "All"):
+				if (self.color == "Green"):
+					self.color = "Blue"
+					self.Sort_publisher.publish(self.color)
+				
+				elif (self.color == "Blue"):
+					self.color = "Red"
+					self.Sort_publisher.publish(self.color)
+				
+				elif (self.color == "Red"):
+					self.color = "Yellow"
+					self.Sort_publisher.publish(self.color)
+					
+				elif (self.color == "Yellow"):
+					self.UI_obj.PrintMessageFromNode(message.data)
+					self.fullyErrect()
+					
+			else:
+				self.UI_obj.PrintMessageFromNode(message.data)
+				self.fullyErrect()
+					
+		else:
+			self.UI_obj.PrintMessageFromNode(message.data)
+				
+		
+			
+		
 		
 		
 if __name__ == "__main__":

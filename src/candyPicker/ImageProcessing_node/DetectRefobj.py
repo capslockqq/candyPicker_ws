@@ -16,25 +16,29 @@ class DetectRefobj():
                       param2=25,
                       minRadius=15,
                       maxRadius=22)
-        circles = np.uint32(np.around(circles))
-        for i in circles[0,:]:
-        #draw the outer circle
-            cv2.circle(img1,(i[0],i[1]),i[2],(0,255,0),2)
-        #draw the center of the circle
-            cv2.circle(img1,(i[0],i[1]),2,(0,0,255),1)
+        if (circles != None):
+            circles = np.uint32(np.around(circles))
+            for i in circles[0,:]:
+            #draw the outer circle
+                cv2.circle(img1,(i[0],i[1]),i[2],(0,255,0),2)
+            #draw the center of the circle
+                cv2.circle(img1,(i[0],i[1]),2,(0,0,255),1)
+            
+                centerPointX = i[0]
+                centerPointY = i[1]
+            
+            cv2.imshow('detected circles',img1)
+            
+            return centerPointX, centerPointY
         
-            centerPointX = i[0]
-            centerPointY = i[1]
-        
-        cv2.imshow('detected circles',img1)
-        
-        return centerPointX, centerPointY
+        else:
+            return -1, -1
     
     def get_from_webcam(self):
         """
         Fetches an image from the webcam
         """
-        print "try fetch from webcam..."
+        #print "try fetch from webcam..."
         stream=urllib.urlopen('http://192.168.0.20/image/jpeg.cgi')
         bytes=''
         bytes+=stream.read(64500)
